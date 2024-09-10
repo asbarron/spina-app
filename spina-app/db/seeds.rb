@@ -1,9 +1,25 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
+# db/seeds.rb
+
+# Ensure that the 'spina_lines' table exists
+unless ActiveRecord::Base.connection.table_exists?(:spina_lines)
+  ActiveRecord::Base.connection.execute <<-SQL
+    CREATE TABLE spina_lines (
+      id SERIAL PRIMARY KEY,
+      content TEXT,
+      created_at TIMESTAMP,
+      updated_at TIMESTAMP
+    );
+  SQL
+end
+
+# Create a test user for SpinaCMS
+Spina::User.create!(
+  email: 'testuser@example.com',
+  password: 'password123',
+  password_confirmation: 'password123',
+  name: 'Test User'  # Add this line if 'name' is required
+)
+
+puts "Test user created!"
+
+# Optionally, add more seed data here if needed

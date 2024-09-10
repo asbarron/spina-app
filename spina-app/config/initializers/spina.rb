@@ -3,7 +3,7 @@ Spina.configure do |config|
   # ===============
   # All locales your content should be available in.
   # Defaults to I18n.default_locale
-  # config.locales = [:en, :nl]
+   config.locales = [:en, :nl]
   
   # Backend title
   # ===============
@@ -87,4 +87,5 @@ Spina.configure do |config|
   # %i( bulgarian cyrillic danish german greek latin macedonian norwegian
   #     romanian russian serbian spanish swedish ukrainian vietnamese)
   # config.transliterations = %i(latin)
+  config.theme = "demo"
 end

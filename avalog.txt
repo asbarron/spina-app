@@ -1,0 +1,92 @@
+
+start time: 17:48 HST
+having trouble running bundle install locally to generate my Gemfile.lock:
+
+An error occurred while installing pg (1.5.8), and Bundler cannot continue.
+Make sure that `gem install pg -v '1.5.8' --source 'https://rubygems.org/'` succeeds before
+bundling.
+
+In Gemfile:
+  spina was resolved to 2.5.0, which depends on
+    pg
+
+was able to resoleve this by installing pg locally:
+brew install libpq
+brew install postgresql
+brew link --force postgresql
+
+
+ran into another issue where my mac was running bundler-1.17 so I ened up installing rbenv and getting a newer version of ruby/bundler
+
+brew install rbenv
+rbenv init
+rbenv install 3.0.6 - m3 mac
+rbenv global 3.0.6
+gem install bundler
+
+env error:
+avabarron@Avas-MacBook-Pro ~/E/spina-app> ruby -v
+ruby 2.6.10p210 (2022-04-12 revision 67958) [universal.arm64e-darwin23]
+avabarron@Avas-MacBook-Pro ~/E/spina-app> rbenv local 3.0.6
+avabarron@Avas-MacBook-Pro ~/E/spina-app> rbenv rehash
+avabarron@Avas-MacBook-Pro ~/E/spina-app> ruby -v
+ruby 2.6.10p210 (2022-04-12 revision 67958) [universal.arm64e-darwin23]
+
+so updated shell:
+set -gx PATH $HOME/.rbenv/shims $PATH
+set -gx PATH /opt/homebrew/bin $PATH
+avabarron@Avas-MacBook-Pro ~/E/spina-app> rbenv rehash
+rbenv local 3.0.6
+avabarron@Avas-MacBook-Pro ~/E/spina-app [1]> ruby -v
+ruby 3.0.6p216 (2023-03-30 revision 23a532679b) [arm64-darwin23]
+FINALLY able to run bundle install >.>
+aaaand needed to downgrade to 2.5.15 for docker 
+gem install bundler -v 2.5.15
+rbenv rehash
+
+trying docker-compose build again T_T
+
+BRUH
+WHY DO I HAVE TO INSTALL ALL THIS STUFF ON MY COMPUTER
+ _I don't want all this_
+LKDJFLSJLKSJDFKLSDF
+ugh:
+xcode-select --install
+brew install cmake
+
+downgrade sassc bc spina is old ash
+gem 'sassc', '~> 2.2.1' 
+
+
+was having issues with docker building gemfile 
+9.948 An error occurred while installing sassc (2.2.1), and Bundler cannot continue.
+9.948 
+9.948 In Gemfile:
+9.948   spina was resolved to 2.5.0, which depends on
+9.948     sass-rails was resolved to 6.0.0, which depends on
+9.948       sassc-rails was resolved to 2.1.2, which depends on
+9.948         sassc
+
+so I got rid of the slim ruby image otherwise I would prob need to install build-essential and w/e else
+... idk maybe I still do
+~waiting for docker-compose build~
+IT WORKED
+*tries docker-compose up -d*
+O
+M
+S
+it started
+*dances internally*
+docker-compose ps
+only the db is up TT__TT
+docker-compose logs web
+eb-1  | bundler: failed to load command: puma (/usr/local/bundle/bin/puma)
+web-1  | config/puma.rb:36:in `_load_from': undefined method `cluster_workers' for an instance of Puma::DSL (NoMethodError)
+web-1  |        from /usr/local/bundle/gems/puma-6.4.2/lib/puma/dsl.rb:133:in `instance_eval'
+web-1  |        from /usr/local/bundle/gems/puma-6.4.2/lib/puma/dsl.rb:133:in `_load_from'
+web-1  |        from /usr/local/bundle/gems/puma-6.4.2/lib/puma/configuration.rb:239:in `block in load'
+
+
+needed to use "workers" not "cluster_workers" in puma.rb
+
+

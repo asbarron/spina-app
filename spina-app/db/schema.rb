@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_09_10_054114) do
+ActiveRecord::Schema[7.1].define(version: 2024_09_10_181033) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -53,7 +53,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_10_054114) do
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.boolean "robots_allowed", default: false
-    t.jsonb "json_attributes"
   end
 
   create_table "spina_attachment_collections", id: :serial, force: :cascade do |t|
@@ -113,6 +112,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_10_054114) do
   end
 
   create_table "spina_lines", id: :serial, force: :cascade do |t|
+    t.string "content"
     t.datetime "created_at", precision: nil
     t.datetime "updated_at", precision: nil
   end
@@ -169,18 +169,21 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_10_054114) do
     t.string "materialized_path"
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
-    t.string "url_title"
     t.index ["locale"], name: "index_spina_page_translations_on_locale"
     t.index ["spina_page_id"], name: "index_spina_page_translations_on_spina_page_id"
   end
 
   create_table "spina_pages", id: :serial, force: :cascade do |t|
+    t.string "title"
+    t.string "menu_title"
+    t.string "description"
     t.boolean "show_in_menu", default: true
     t.string "slug"
     t.boolean "deletable", default: true
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.string "name"
+    t.string "seo_title"
     t.boolean "skip_to_first_child", default: false
     t.string "view_template"
     t.string "layout_template"
@@ -188,9 +191,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_10_054114) do
     t.string "link_url"
     t.string "ancestry"
     t.integer "position"
+    t.string "materialized_path"
     t.boolean "active", default: true
     t.integer "resource_id"
-    t.jsonb "json_attributes"
     t.index ["resource_id"], name: "index_spina_pages_on_resource_id"
   end
 
@@ -201,7 +204,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_10_054114) do
     t.string "order_by"
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
-    t.jsonb "slug"
   end
 
   create_table "spina_rewrite_rules", id: :serial, force: :cascade do |t|
@@ -255,6 +257,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_10_054114) do
   end
 
   create_table "spina_texts", id: :serial, force: :cascade do |t|
+    t.text "content"
     t.datetime "created_at", precision: nil
     t.datetime "updated_at", precision: nil
   end
@@ -267,8 +270,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_10_054114) do
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.datetime "last_logged_in", precision: nil
-    t.string "password_reset_token"
-    t.datetime "password_reset_sent_at", precision: nil
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

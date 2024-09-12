@@ -2621,3 +2621,855 @@ Starting Docker containers
  Container spina-app-web-1  Starting
  Container spina-app-web-1  Started
 Docker containers started successfully
+Usage: ./run.sh [dev|prod]
+Environment set to dev. RAILS_ENV set to development
+Loaded environment variables from .env.dev
+Build args: --build-arg ENV=dev --build-arg RAILS_ENV=development --build-arg POSTGRES_USER=dev_user --build-arg POSTGRES_PASSWORD=dev_password --build-arg POSTGRES_DB=spina --build-arg SPINA_ADMIN_EMAIL=admin@example.com --build-arg SPINA_ADMIN_PASSWORD=password123 --build-arg DATABASE_URL=postgres://dev_user:dev_password@db:5432/spina 
+Building Docker containers
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [web internal] load build definition from Dockerfile
+#1 transferring dockerfile: 640B done
+#1 DONE 0.0s
+
+#2 [web internal] load metadata for docker.io/library/ruby:3.3.5-bookworm
+#2 DONE 1.0s
+
+#3 [web internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [web 1/7] FROM docker.io/library/ruby:3.3.5-bookworm@sha256:9ee601015fbb7c610ae02137d5698ab712f821069eaf7c0548e58a5b609970aa
+#4 CACHED
+
+#5 [web internal] load build context
+#5 transferring context: 513B done
+#5 DONE 0.0s
+
+#6 [web 2/7] RUN apt-get update -qq && apt-get install -y nodejs postgresql-client
+#6 2.018 Reading package lists...
+#6 2.219 Building dependency tree...
+#6 2.275 Reading state information...
+#6 2.337 The following additional packages will be installed:
+#6 2.338   libc-ares2 libnode108 libuv1 node-acorn node-busboy node-cjs-module-lexer
+#6 2.338   node-undici node-xtend nodejs-doc postgresql-client-15
+#6 2.338   postgresql-client-common
+#6 2.338 Suggested packages:
+#6 2.338   npm postgresql-15 postgresql-doc-15
+#6 2.375 The following NEW packages will be installed:
+#6 2.375   libc-ares2 libnode108 libuv1 node-acorn node-busboy node-cjs-module-lexer
+#6 2.375   node-undici node-xtend nodejs nodejs-doc postgresql-client
+#6 2.375   postgresql-client-15 postgresql-client-common
+#6 2.504 0 upgraded, 13 newly installed, 0 to remove and 0 not upgraded.
+#6 2.504 Need to get 15.8 MB of archives.
+#6 2.504 After this operation, 75.5 MB of additional disk space will be used.
+#6 2.504 Get:1 http://deb.debian.org/debian bookworm/main arm64 libc-ares2 arm64 1.18.1-3 [99.2 kB]
+#6 2.646 Get:2 http://deb.debian.org/debian bookworm/main arm64 libuv1 arm64 1.44.2-1+deb12u1 [130 kB]
+#6 2.706 Get:3 http://deb.debian.org/debian bookworm/main arm64 node-xtend all 4.0.2-3 [3932 B]
+#6 2.706 Get:4 http://deb.debian.org/debian bookworm/main arm64 nodejs arm64 18.19.0+dfsg-6~deb12u2 [319 kB]
+#6 2.774 Get:5 http://deb.debian.org/debian bookworm/main arm64 node-acorn all 8.8.1+ds+~cs25.17.7-2 [128 kB]
+#6 2.784 Get:6 http://deb.debian.org/debian bookworm/main arm64 node-cjs-module-lexer all 1.2.2+dfsg-5 [30.1 kB]
+#6 2.787 Get:7 http://deb.debian.org/debian bookworm/main arm64 node-busboy all 1.6.0+~cs2.6.0-2 [16.9 kB]
+#6 2.789 Get:8 http://deb.debian.org/debian bookworm/main arm64 node-undici all 5.15.0+dfsg1+~cs20.10.9.3-1+deb12u4 [285 kB]
+#6 2.827 Get:9 http://deb.debian.org/debian bookworm/main arm64 libnode108 arm64 18.19.0+dfsg-6~deb12u2 [9547 kB]
+#6 3.212 Get:10 http://deb.debian.org/debian bookworm/main arm64 nodejs-doc all 18.19.0+dfsg-6~deb12u2 [3569 kB]
+#6 3.320 Get:11 http://deb.debian.org/debian bookworm/main arm64 postgresql-client-common all 248 [35.1 kB]
+#6 3.320 Get:12 http://deb.debian.org/debian bookworm/main arm64 postgresql-client-15 arm64 15.8-0+deb12u1 [1652 kB]
+#6 3.362 Get:13 http://deb.debian.org/debian bookworm/main arm64 postgresql-client all 15+248 [10.1 kB]
+#6 3.464 debconf: delaying package configuration, since apt-utils is not installed
+#6 3.474 Fetched 15.8 MB in 1s (16.1 MB/s)
+#6 3.483 Selecting previously unselected package libc-ares2:arm64.
+#6 3.483 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 23265 files and directories currently installed.)
+#6 3.494 Preparing to unpack .../00-libc-ares2_1.18.1-3_arm64.deb ...
+#6 3.496 Unpacking libc-ares2:arm64 (1.18.1-3) ...
+#6 3.509 Selecting previously unselected package libuv1:arm64.
+#6 3.510 Preparing to unpack .../01-libuv1_1.44.2-1+deb12u1_arm64.deb ...
+#6 3.511 Unpacking libuv1:arm64 (1.44.2-1+deb12u1) ...
+#6 3.524 Selecting previously unselected package node-xtend.
+#6 3.525 Preparing to unpack .../02-node-xtend_4.0.2-3_all.deb ...
+#6 3.525 Unpacking node-xtend (4.0.2-3) ...
+#6 3.534 Selecting previously unselected package nodejs.
+#6 3.535 Preparing to unpack .../03-nodejs_18.19.0+dfsg-6~deb12u2_arm64.deb ...
+#6 3.535 Unpacking nodejs (18.19.0+dfsg-6~deb12u2) ...
+#6 3.568 Selecting previously unselected package node-acorn.
+#6 3.569 Preparing to unpack .../04-node-acorn_8.8.1+ds+~cs25.17.7-2_all.deb ...
+#6 3.570 Unpacking node-acorn (8.8.1+ds+~cs25.17.7-2) ...
+#6 3.586 Selecting previously unselected package node-cjs-module-lexer.
+#6 3.587 Preparing to unpack .../05-node-cjs-module-lexer_1.2.2+dfsg-5_all.deb ...
+#6 3.588 Unpacking node-cjs-module-lexer (1.2.2+dfsg-5) ...
+#6 3.597 Selecting previously unselected package node-busboy.
+#6 3.598 Preparing to unpack .../06-node-busboy_1.6.0+~cs2.6.0-2_all.deb ...
+#6 3.599 Unpacking node-busboy (1.6.0+~cs2.6.0-2) ...
+#6 3.609 Selecting previously unselected package node-undici.
+#6 3.610 Preparing to unpack .../07-node-undici_5.15.0+dfsg1+~cs20.10.9.3-1+deb12u4_all.deb ...
+#6 3.612 Unpacking node-undici (5.15.0+dfsg1+~cs20.10.9.3-1+deb12u4) ...
+#6 3.635 Selecting previously unselected package libnode108:arm64.
+#6 3.636 Preparing to unpack .../08-libnode108_18.19.0+dfsg-6~deb12u2_arm64.deb ...
+#6 3.637 Unpacking libnode108:arm64 (18.19.0+dfsg-6~deb12u2) ...
+#6 3.927 Selecting previously unselected package nodejs-doc.
+#6 3.928 Preparing to unpack .../09-nodejs-doc_18.19.0+dfsg-6~deb12u2_all.deb ...
+#6 3.929 Unpacking nodejs-doc (18.19.0+dfsg-6~deb12u2) ...
+#6 4.059 Selecting previously unselected package postgresql-client-common.
+#6 4.061 Preparing to unpack .../10-postgresql-client-common_248_all.deb ...
+#6 4.061 Unpacking postgresql-client-common (248) ...
+#6 4.072 Selecting previously unselected package postgresql-client-15.
+#6 4.073 Preparing to unpack .../11-postgresql-client-15_15.8-0+deb12u1_arm64.deb ...
+#6 4.074 Unpacking postgresql-client-15 (15.8-0+deb12u1) ...
+#6 4.158 Selecting previously unselected package postgresql-client.
+#6 4.159 Preparing to unpack .../12-postgresql-client_15+248_all.deb ...
+#6 4.160 Unpacking postgresql-client (15+248) ...
+#6 4.172 Setting up postgresql-client-common (248) ...
+#6 4.176 Setting up postgresql-client-15 (15.8-0+deb12u1) ...
+#6 4.315 update-alternatives: using /usr/share/postgresql/15/man/man1/psql.1.gz to provide /usr/share/man/man1/psql.1.gz (psql.1.gz) in auto mode
+#6 4.327 Setting up node-cjs-module-lexer (1.2.2+dfsg-5) ...
+#6 4.329 Setting up libc-ares2:arm64 (1.18.1-3) ...
+#6 4.331 Setting up libuv1:arm64 (1.44.2-1+deb12u1) ...
+#6 4.334 Setting up nodejs-doc (18.19.0+dfsg-6~deb12u2) ...
+#6 4.336 Setting up node-xtend (4.0.2-3) ...
+#6 4.338 Setting up node-busboy (1.6.0+~cs2.6.0-2) ...
+#6 4.340 Setting up postgresql-client (15+248) ...
+#6 4.342 Setting up node-undici (5.15.0+dfsg1+~cs20.10.9.3-1+deb12u4) ...
+#6 4.347 Setting up node-acorn (8.8.1+ds+~cs25.17.7-2) ...
+#6 4.349 Setting up libnode108:arm64 (18.19.0+dfsg-6~deb12u2) ...
+#6 4.352 Setting up nodejs (18.19.0+dfsg-6~deb12u2) ...
+#6 4.354 update-alternatives: using /usr/bin/nodejs to provide /usr/bin/js (js) in auto mode
+#6 4.356 Processing triggers for libc-bin (2.36-9+deb12u8) ...
+#6 DONE 4.4s
+
+#7 [web 3/7] WORKDIR /app/
+#7 DONE 0.0s
+
+#8 [web 4/7] COPY .env.dev .env
+#8 DONE 0.0s
+
+#9 [web 5/7] RUN gem install bundler rails
+#9 12.67 Successfully installed bundler-2.5.18
+#9 12.67 Successfully installed zeitwerk-2.6.18
+#9 12.67 Successfully installed thor-1.3.2
+#9 12.67 Successfully installed webrick-1.8.1
+#9 12.67 Successfully installed rack-3.1.7
+#9 12.67 Successfully installed rackup-2.1.0
+#9 12.67 Successfully installed concurrent-ruby-1.3.4
+#9 12.67 Successfully installed tzinfo-2.0.6
+#9 12.67 Successfully installed i18n-1.14.5
+#9 12.67 Successfully installed connection_pool-2.4.1
+#9 12.67 Successfully installed activesupport-7.2.1
+#9 12.67 Successfully installed useragent-0.16.10
+#9 12.67 Successfully installed nokogiri-1.16.7-aarch64-linux
+#9 12.67 Successfully installed crass-1.0.6
+#9 12.67 Successfully installed loofah-2.22.0
+#9 12.67 Successfully installed rails-html-sanitizer-1.6.0
+#9 12.67 Successfully installed rails-dom-testing-2.2.0
+#9 12.67 Successfully installed rack-test-2.1.0
+#9 12.67 Successfully installed rack-session-2.0.0
+#9 12.67 Successfully installed erubi-1.13.0
+#9 12.67 Successfully installed builder-3.3.0
+#9 12.67 Successfully installed actionview-7.2.1
+#9 12.67 Successfully installed actionpack-7.2.1
+#9 12.67 Successfully installed railties-7.2.1
+#9 12.67 Successfully installed marcel-1.0.4
+#9 12.67 Successfully installed activemodel-7.2.1
+#9 12.67 Successfully installed activerecord-7.2.1
+#9 12.67 Successfully installed globalid-1.2.1
+#9 12.67 Successfully installed activejob-7.2.1
+#9 12.67 Successfully installed activestorage-7.2.1
+#9 12.67 Successfully installed actiontext-7.2.1
+#9 12.67 Successfully installed mini_mime-1.1.5
+#9 12.67 Successfully installed mail-2.8.1
+#9 12.67 Successfully installed actionmailer-7.2.1
+#9 12.67 Successfully installed actionmailbox-7.2.1
+#9 12.67 Successfully installed websocket-extensions-0.1.5
+#9 12.67 Building native extensions. This could take a while...
+#9 12.80 Successfully installed websocket-driver-0.7.6
+#9 12.80 Building native extensions. This could take a while...
+#9 14.30 Successfully installed nio4r-2.7.3
+#9 14.30 Successfully installed actioncable-7.2.1
+#9 14.30 Successfully installed rails-7.2.1
+#9 14.30 40 gems installed
+#9 DONE 14.3s
+
+#10 [web 6/7] COPY setup.sh /app/setup.sh
+#10 DONE 0.0s
+
+#11 [web 7/7] RUN chmod +x /app/setup.sh
+#11 DONE 0.2s
+
+#12 [web] exporting to image
+#12 exporting layers
+#12 exporting layers 0.2s done
+#12 writing image sha256:3bc53bbc7f122a14769a4f5b1580b9c8403bcb5b52ff817f83d0b8b166c5d7c6 done
+#12 naming to docker.io/library/spina-app-web done
+#12 DONE 0.2s
+Starting Docker containers
+ Container spina-app-db-1  Running
+ Container spina-app-web-1  Recreate
+ Container spina-app-web-1  Recreated
+ Container spina-app-db-1  Waiting
+ Container spina-app-db-1  Healthy
+ Container spina-app-web-1  Starting
+ Container spina-app-web-1  Started
+Docker containers started successfully
+Environment set to dev. RAILS_ENV set to development
+Loaded environment variables from .env.dev
+Build args: --build-arg ENV=dev --build-arg RAILS_ENV=development --build-arg POSTGRES_USER=dev_user --build-arg POSTGRES_PASSWORD=dev_password --build-arg POSTGRES_DB=spina --build-arg SPINA_ADMIN_EMAIL=admin@example.com --build-arg SPINA_ADMIN_PASSWORD=password123 --build-arg DATABASE_URL=postgres://dev_user:dev_password@db:5432/spina 
+Building Docker containers
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [web internal] load build definition from Dockerfile
+#1 transferring dockerfile: 640B done
+#1 DONE 0.0s
+
+#2 [web internal] load metadata for docker.io/library/ruby:3.3.5-bookworm
+#2 DONE 0.5s
+
+#3 [web internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [web 1/7] FROM docker.io/library/ruby:3.3.5-bookworm@sha256:9ee601015fbb7c610ae02137d5698ab712f821069eaf7c0548e58a5b609970aa
+#4 CACHED
+
+#5 [web internal] load build context
+#5 transferring context: 58B done
+#5 DONE 0.0s
+
+#6 [web 2/7] RUN apt-get update -qq && apt-get install -y nodejs postgresql-client
+#6 1.932 Reading package lists...
+#6 2.132 Building dependency tree...
+#6 2.185 Reading state information...
+#6 2.248 The following additional packages will be installed:
+#6 2.249   libc-ares2 libnode108 libuv1 node-acorn node-busboy node-cjs-module-lexer
+#6 2.249   node-undici node-xtend nodejs-doc postgresql-client-15
+#6 2.249   postgresql-client-common
+#6 2.249 Suggested packages:
+#6 2.249   npm postgresql-15 postgresql-doc-15
+#6 2.286 The following NEW packages will be installed:
+#6 2.286   libc-ares2 libnode108 libuv1 node-acorn node-busboy node-cjs-module-lexer
+#6 2.286   node-undici node-xtend nodejs nodejs-doc postgresql-client
+#6 2.286   postgresql-client-15 postgresql-client-common
+#6 2.416 0 upgraded, 13 newly installed, 0 to remove and 0 not upgraded.
+#6 2.416 Need to get 15.8 MB of archives.
+#6 2.416 After this operation, 75.5 MB of additional disk space will be used.
+#6 2.416 Get:1 http://deb.debian.org/debian bookworm/main arm64 libc-ares2 arm64 1.18.1-3 [99.2 kB]
+#6 2.556 Get:2 http://deb.debian.org/debian bookworm/main arm64 libuv1 arm64 1.44.2-1+deb12u1 [130 kB]
+#6 2.617 Get:3 http://deb.debian.org/debian bookworm/main arm64 node-xtend all 4.0.2-3 [3932 B]
+#6 2.619 Get:4 http://deb.debian.org/debian bookworm/main arm64 nodejs arm64 18.19.0+dfsg-6~deb12u2 [319 kB]
+#6 2.686 Get:5 http://deb.debian.org/debian bookworm/main arm64 node-acorn all 8.8.1+ds+~cs25.17.7-2 [128 kB]
+#6 2.698 Get:6 http://deb.debian.org/debian bookworm/main arm64 node-cjs-module-lexer all 1.2.2+dfsg-5 [30.1 kB]
+#6 2.699 Get:7 http://deb.debian.org/debian bookworm/main arm64 node-busboy all 1.6.0+~cs2.6.0-2 [16.9 kB]
+#6 2.701 Get:8 http://deb.debian.org/debian bookworm/main arm64 node-undici all 5.15.0+dfsg1+~cs20.10.9.3-1+deb12u4 [285 kB]
+#6 2.741 Get:9 http://deb.debian.org/debian bookworm/main arm64 libnode108 arm64 18.19.0+dfsg-6~deb12u2 [9547 kB]
+#6 3.205 Get:10 http://deb.debian.org/debian bookworm/main arm64 nodejs-doc all 18.19.0+dfsg-6~deb12u2 [3569 kB]
+#6 3.302 Get:11 http://deb.debian.org/debian bookworm/main arm64 postgresql-client-common all 248 [35.1 kB]
+#6 3.302 Get:12 http://deb.debian.org/debian bookworm/main arm64 postgresql-client-15 arm64 15.8-0+deb12u1 [1652 kB]
+#6 3.332 Get:13 http://deb.debian.org/debian bookworm/main arm64 postgresql-client all 15+248 [10.1 kB]
+#6 3.432 debconf: delaying package configuration, since apt-utils is not installed
+#6 3.442 Fetched 15.8 MB in 1s (15.2 MB/s)
+#6 3.451 Selecting previously unselected package libc-ares2:arm64.
+#6 3.451 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 23265 files and directories currently installed.)
+#6 3.461 Preparing to unpack .../00-libc-ares2_1.18.1-3_arm64.deb ...
+#6 3.463 Unpacking libc-ares2:arm64 (1.18.1-3) ...
+#6 3.476 Selecting previously unselected package libuv1:arm64.
+#6 3.477 Preparing to unpack .../01-libuv1_1.44.2-1+deb12u1_arm64.deb ...
+#6 3.478 Unpacking libuv1:arm64 (1.44.2-1+deb12u1) ...
+#6 3.490 Selecting previously unselected package node-xtend.
+#6 3.491 Preparing to unpack .../02-node-xtend_4.0.2-3_all.deb ...
+#6 3.492 Unpacking node-xtend (4.0.2-3) ...
+#6 3.500 Selecting previously unselected package nodejs.
+#6 3.501 Preparing to unpack .../03-nodejs_18.19.0+dfsg-6~deb12u2_arm64.deb ...
+#6 3.502 Unpacking nodejs (18.19.0+dfsg-6~deb12u2) ...
+#6 3.533 Selecting previously unselected package node-acorn.
+#6 3.534 Preparing to unpack .../04-node-acorn_8.8.1+ds+~cs25.17.7-2_all.deb ...
+#6 3.535 Unpacking node-acorn (8.8.1+ds+~cs25.17.7-2) ...
+#6 3.552 Selecting previously unselected package node-cjs-module-lexer.
+#6 3.553 Preparing to unpack .../05-node-cjs-module-lexer_1.2.2+dfsg-5_all.deb ...
+#6 3.554 Unpacking node-cjs-module-lexer (1.2.2+dfsg-5) ...
+#6 3.562 Selecting previously unselected package node-busboy.
+#6 3.563 Preparing to unpack .../06-node-busboy_1.6.0+~cs2.6.0-2_all.deb ...
+#6 3.564 Unpacking node-busboy (1.6.0+~cs2.6.0-2) ...
+#6 3.575 Selecting previously unselected package node-undici.
+#6 3.575 Preparing to unpack .../07-node-undici_5.15.0+dfsg1+~cs20.10.9.3-1+deb12u4_all.deb ...
+#6 3.578 Unpacking node-undici (5.15.0+dfsg1+~cs20.10.9.3-1+deb12u4) ...
+#6 3.600 Selecting previously unselected package libnode108:arm64.
+#6 3.601 Preparing to unpack .../08-libnode108_18.19.0+dfsg-6~deb12u2_arm64.deb ...
+#6 3.602 Unpacking libnode108:arm64 (18.19.0+dfsg-6~deb12u2) ...
+#6 3.893 Selecting previously unselected package nodejs-doc.
+#6 3.894 Preparing to unpack .../09-nodejs-doc_18.19.0+dfsg-6~deb12u2_all.deb ...
+#6 3.894 Unpacking nodejs-doc (18.19.0+dfsg-6~deb12u2) ...
+#6 4.022 Selecting previously unselected package postgresql-client-common.
+#6 4.023 Preparing to unpack .../10-postgresql-client-common_248_all.deb ...
+#6 4.024 Unpacking postgresql-client-common (248) ...
+#6 4.034 Selecting previously unselected package postgresql-client-15.
+#6 4.035 Preparing to unpack .../11-postgresql-client-15_15.8-0+deb12u1_arm64.deb ...
+#6 4.036 Unpacking postgresql-client-15 (15.8-0+deb12u1) ...
+#6 4.121 Selecting previously unselected package postgresql-client.
+#6 4.122 Preparing to unpack .../12-postgresql-client_15+248_all.deb ...
+#6 4.123 Unpacking postgresql-client (15+248) ...
+#6 4.135 Setting up postgresql-client-common (248) ...
+#6 4.139 Setting up postgresql-client-15 (15.8-0+deb12u1) ...
+#6 4.276 update-alternatives: using /usr/share/postgresql/15/man/man1/psql.1.gz to provide /usr/share/man/man1/psql.1.gz (psql.1.gz) in auto mode
+#6 4.288 Setting up node-cjs-module-lexer (1.2.2+dfsg-5) ...
+#6 4.291 Setting up libc-ares2:arm64 (1.18.1-3) ...
+#6 4.294 Setting up libuv1:arm64 (1.44.2-1+deb12u1) ...
+#6 4.296 Setting up nodejs-doc (18.19.0+dfsg-6~deb12u2) ...
+#6 4.298 Setting up node-xtend (4.0.2-3) ...
+#6 4.300 Setting up node-busboy (1.6.0+~cs2.6.0-2) ...
+#6 4.302 Setting up postgresql-client (15+248) ...
+#6 4.305 Setting up node-undici (5.15.0+dfsg1+~cs20.10.9.3-1+deb12u4) ...
+#6 4.309 Setting up node-acorn (8.8.1+ds+~cs25.17.7-2) ...
+#6 4.311 Setting up libnode108:arm64 (18.19.0+dfsg-6~deb12u2) ...
+#6 4.313 Setting up nodejs (18.19.0+dfsg-6~deb12u2) ...
+#6 4.316 update-alternatives: using /usr/bin/nodejs to provide /usr/bin/js (js) in auto mode
+#6 4.318 Processing triggers for libc-bin (2.36-9+deb12u8) ...
+#6 DONE 4.4s
+
+#7 [web 3/7] WORKDIR /app/
+#7 DONE 0.0s
+
+#8 [web 4/7] COPY .env.dev .env
+#8 DONE 0.0s
+
+#9 [web 5/7] RUN gem install bundler rails
+#9 12.85 Successfully installed bundler-2.5.18
+#9 12.85 Successfully installed zeitwerk-2.6.18
+#9 12.85 Successfully installed thor-1.3.2
+#9 12.85 Successfully installed webrick-1.8.1
+#9 12.85 Successfully installed rack-3.1.7
+#9 12.85 Successfully installed rackup-2.1.0
+#9 12.85 Successfully installed concurrent-ruby-1.3.4
+#9 12.85 Successfully installed tzinfo-2.0.6
+#9 12.85 Successfully installed i18n-1.14.5
+#9 12.85 Successfully installed connection_pool-2.4.1
+#9 12.85 Successfully installed activesupport-7.2.1
+#9 12.85 Successfully installed useragent-0.16.10
+#9 12.85 Successfully installed nokogiri-1.16.7-aarch64-linux
+#9 12.85 Successfully installed crass-1.0.6
+#9 12.85 Successfully installed loofah-2.22.0
+#9 12.85 Successfully installed rails-html-sanitizer-1.6.0
+#9 12.85 Successfully installed rails-dom-testing-2.2.0
+#9 12.85 Successfully installed rack-test-2.1.0
+#9 12.85 Successfully installed rack-session-2.0.0
+#9 12.85 Successfully installed erubi-1.13.0
+#9 12.85 Successfully installed builder-3.3.0
+#9 12.85 Successfully installed actionview-7.2.1
+#9 12.85 Successfully installed actionpack-7.2.1
+#9 12.85 Successfully installed railties-7.2.1
+#9 12.85 Successfully installed marcel-1.0.4
+#9 12.85 Successfully installed activemodel-7.2.1
+#9 12.85 Successfully installed activerecord-7.2.1
+#9 12.85 Successfully installed globalid-1.2.1
+#9 12.85 Successfully installed activejob-7.2.1
+#9 12.85 Successfully installed activestorage-7.2.1
+#9 12.85 Successfully installed actiontext-7.2.1
+#9 12.85 Successfully installed mini_mime-1.1.5
+#9 12.85 Successfully installed mail-2.8.1
+#9 12.85 Successfully installed actionmailer-7.2.1
+#9 12.85 Successfully installed actionmailbox-7.2.1
+#9 12.85 Successfully installed websocket-extensions-0.1.5
+#9 12.85 Building native extensions. This could take a while...
+#9 12.98 Successfully installed websocket-driver-0.7.6
+#9 12.98 Building native extensions. This could take a while...
+#9 14.47 Successfully installed nio4r-2.7.3
+#9 14.47 Successfully installed actioncable-7.2.1
+#9 14.47 Successfully installed rails-7.2.1
+#9 14.47 40 gems installed
+#9 DONE 14.5s
+
+#10 [web 6/7] COPY setup.sh /app/setup.sh
+#10 DONE 0.0s
+
+#11 [web 7/7] RUN chmod +x /app/setup.sh
+#11 DONE 0.2s
+
+#12 [web] exporting to image
+#12 exporting layers
+#12 exporting layers 0.2s done
+#12 writing image sha256:d6ff957bad8327c6c5c31101b428829753e20df6a846ac001f8681dc7af91cac
+#12 writing image sha256:d6ff957bad8327c6c5c31101b428829753e20df6a846ac001f8681dc7af91cac done
+#12 naming to docker.io/library/spina-app-web done
+#12 DONE 0.2s
+Starting Docker containers
+ Container spina-app-db-1  Running
+ Container spina-app-web-1  Recreate
+ Container spina-app-web-1  Recreated
+ Container spina-app-db-1  Waiting
+ Container spina-app-db-1  Healthy
+ Container spina-app-web-1  Starting
+ Container spina-app-web-1  Started
+Docker containers started successfully
+Environment set to dev. RAILS_ENV set to development
+Loaded environment variables from .env.dev
+Build args: --build-arg ENV=dev --build-arg RAILS_ENV=development --build-arg POSTGRES_USER=dev_user --build-arg POSTGRES_PASSWORD=dev_password --build-arg POSTGRES_DB=spina --build-arg SPINA_ADMIN_EMAIL=admin@example.com --build-arg SPINA_ADMIN_PASSWORD=password123 --build-arg DATABASE_URL=postgres://dev_user:dev_password@db:5432/spina 
+Building Docker containers
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [web internal] load build definition from Dockerfile
+#1 transferring dockerfile: 640B done
+#1 DONE 0.0s
+
+#2 [web internal] load metadata for docker.io/library/ruby:3.3.5-bookworm
+#2 DONE 0.5s
+
+#3 [web internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [web 1/7] FROM docker.io/library/ruby:3.3.5-bookworm@sha256:9ee601015fbb7c610ae02137d5698ab712f821069eaf7c0548e58a5b609970aa
+#4 CACHED
+
+#5 [web internal] load build context
+#5 transferring context: 513B done
+#5 DONE 0.0s
+
+#6 [web 2/7] RUN apt-get update -qq && apt-get install -y nodejs postgresql-client
+#6 1.842 Reading package lists...
+#6 2.047 Building dependency tree...
+#6 2.100 Reading state information...
+#6 2.162 The following additional packages will be installed:
+#6 2.162   libc-ares2 libnode108 libuv1 node-acorn node-busboy node-cjs-module-lexer
+#6 2.162   node-undici node-xtend nodejs-doc postgresql-client-15
+#6 2.162   postgresql-client-common
+#6 2.163 Suggested packages:
+#6 2.163   npm postgresql-15 postgresql-doc-15
+#6 2.200 The following NEW packages will be installed:
+#6 2.200   libc-ares2 libnode108 libuv1 node-acorn node-busboy node-cjs-module-lexer
+#6 2.200   node-undici node-xtend nodejs nodejs-doc postgresql-client
+#6 2.200   postgresql-client-15 postgresql-client-common
+#6 2.345 0 upgraded, 13 newly installed, 0 to remove and 0 not upgraded.
+#6 2.345 Need to get 15.8 MB of archives.
+#6 2.345 After this operation, 75.5 MB of additional disk space will be used.
+#6 2.345 Get:1 http://deb.debian.org/debian bookworm/main arm64 libc-ares2 arm64 1.18.1-3 [99.2 kB]
+#6 2.487 Get:2 http://deb.debian.org/debian bookworm/main arm64 libuv1 arm64 1.44.2-1+deb12u1 [130 kB]
+#6 2.511 Get:3 http://deb.debian.org/debian bookworm/main arm64 node-xtend all 4.0.2-3 [3932 B]
+#6 2.512 Get:4 http://deb.debian.org/debian bookworm/main arm64 nodejs arm64 18.19.0+dfsg-6~deb12u2 [319 kB]
+#6 2.613 Get:5 http://deb.debian.org/debian bookworm/main arm64 node-acorn all 8.8.1+ds+~cs25.17.7-2 [128 kB]
+#6 2.622 Get:6 http://deb.debian.org/debian bookworm/main arm64 node-cjs-module-lexer all 1.2.2+dfsg-5 [30.1 kB]
+#6 2.624 Get:7 http://deb.debian.org/debian bookworm/main arm64 node-busboy all 1.6.0+~cs2.6.0-2 [16.9 kB]
+#6 2.626 Get:8 http://deb.debian.org/debian bookworm/main arm64 node-undici all 5.15.0+dfsg1+~cs20.10.9.3-1+deb12u4 [285 kB]
+#6 2.668 Get:9 http://deb.debian.org/debian bookworm/main arm64 libnode108 arm64 18.19.0+dfsg-6~deb12u2 [9547 kB]
+#6 3.076 Get:10 http://deb.debian.org/debian bookworm/main arm64 nodejs-doc all 18.19.0+dfsg-6~deb12u2 [3569 kB]
+#6 3.261 Get:11 http://deb.debian.org/debian bookworm/main arm64 postgresql-client-common all 248 [35.1 kB]
+#6 3.263 Get:12 http://deb.debian.org/debian bookworm/main arm64 postgresql-client-15 arm64 15.8-0+deb12u1 [1652 kB]
+#6 3.319 Get:13 http://deb.debian.org/debian bookworm/main arm64 postgresql-client all 15+248 [10.1 kB]
+#6 3.428 debconf: delaying package configuration, since apt-utils is not installed
+#6 3.438 Fetched 15.8 MB in 1s (14.2 MB/s)
+#6 3.447 Selecting previously unselected package libc-ares2:arm64.
+#6 3.447 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 23265 files and directories currently installed.)
+#6 3.458 Preparing to unpack .../00-libc-ares2_1.18.1-3_arm64.deb ...
+#6 3.459 Unpacking libc-ares2:arm64 (1.18.1-3) ...
+#6 3.473 Selecting previously unselected package libuv1:arm64.
+#6 3.474 Preparing to unpack .../01-libuv1_1.44.2-1+deb12u1_arm64.deb ...
+#6 3.475 Unpacking libuv1:arm64 (1.44.2-1+deb12u1) ...
+#6 3.487 Selecting previously unselected package node-xtend.
+#6 3.488 Preparing to unpack .../02-node-xtend_4.0.2-3_all.deb ...
+#6 3.489 Unpacking node-xtend (4.0.2-3) ...
+#6 3.497 Selecting previously unselected package nodejs.
+#6 3.498 Preparing to unpack .../03-nodejs_18.19.0+dfsg-6~deb12u2_arm64.deb ...
+#6 3.499 Unpacking nodejs (18.19.0+dfsg-6~deb12u2) ...
+#6 3.530 Selecting previously unselected package node-acorn.
+#6 3.531 Preparing to unpack .../04-node-acorn_8.8.1+ds+~cs25.17.7-2_all.deb ...
+#6 3.532 Unpacking node-acorn (8.8.1+ds+~cs25.17.7-2) ...
+#6 3.549 Selecting previously unselected package node-cjs-module-lexer.
+#6 3.550 Preparing to unpack .../05-node-cjs-module-lexer_1.2.2+dfsg-5_all.deb ...
+#6 3.551 Unpacking node-cjs-module-lexer (1.2.2+dfsg-5) ...
+#6 3.560 Selecting previously unselected package node-busboy.
+#6 3.561 Preparing to unpack .../06-node-busboy_1.6.0+~cs2.6.0-2_all.deb ...
+#6 3.561 Unpacking node-busboy (1.6.0+~cs2.6.0-2) ...
+#6 3.572 Selecting previously unselected package node-undici.
+#6 3.573 Preparing to unpack .../07-node-undici_5.15.0+dfsg1+~cs20.10.9.3-1+deb12u4_all.deb ...
+#6 3.575 Unpacking node-undici (5.15.0+dfsg1+~cs20.10.9.3-1+deb12u4) ...
+#6 3.598 Selecting previously unselected package libnode108:arm64.
+#6 3.599 Preparing to unpack .../08-libnode108_18.19.0+dfsg-6~deb12u2_arm64.deb ...
+#6 3.600 Unpacking libnode108:arm64 (18.19.0+dfsg-6~deb12u2) ...
+#6 3.890 Selecting previously unselected package nodejs-doc.
+#6 3.891 Preparing to unpack .../09-nodejs-doc_18.19.0+dfsg-6~deb12u2_all.deb ...
+#6 3.892 Unpacking nodejs-doc (18.19.0+dfsg-6~deb12u2) ...
+#6 4.022 Selecting previously unselected package postgresql-client-common.
+#6 4.023 Preparing to unpack .../10-postgresql-client-common_248_all.deb ...
+#6 4.024 Unpacking postgresql-client-common (248) ...
+#6 4.035 Selecting previously unselected package postgresql-client-15.
+#6 4.036 Preparing to unpack .../11-postgresql-client-15_15.8-0+deb12u1_arm64.deb ...
+#6 4.037 Unpacking postgresql-client-15 (15.8-0+deb12u1) ...
+#6 4.122 Selecting previously unselected package postgresql-client.
+#6 4.123 Preparing to unpack .../12-postgresql-client_15+248_all.deb ...
+#6 4.124 Unpacking postgresql-client (15+248) ...
+#6 4.136 Setting up postgresql-client-common (248) ...
+#6 4.140 Setting up postgresql-client-15 (15.8-0+deb12u1) ...
+#6 4.278 update-alternatives: using /usr/share/postgresql/15/man/man1/psql.1.gz to provide /usr/share/man/man1/psql.1.gz (psql.1.gz) in auto mode
+#6 4.290 Setting up node-cjs-module-lexer (1.2.2+dfsg-5) ...
+#6 4.293 Setting up libc-ares2:arm64 (1.18.1-3) ...
+#6 4.295 Setting up libuv1:arm64 (1.44.2-1+deb12u1) ...
+#6 4.297 Setting up nodejs-doc (18.19.0+dfsg-6~deb12u2) ...
+#6 4.300 Setting up node-xtend (4.0.2-3) ...
+#6 4.302 Setting up node-busboy (1.6.0+~cs2.6.0-2) ...
+#6 4.304 Setting up postgresql-client (15+248) ...
+#6 4.306 Setting up node-undici (5.15.0+dfsg1+~cs20.10.9.3-1+deb12u4) ...
+#6 4.311 Setting up node-acorn (8.8.1+ds+~cs25.17.7-2) ...
+#6 4.313 Setting up libnode108:arm64 (18.19.0+dfsg-6~deb12u2) ...
+#6 4.315 Setting up nodejs (18.19.0+dfsg-6~deb12u2) ...
+#6 4.318 update-alternatives: using /usr/bin/nodejs to provide /usr/bin/js (js) in auto mode
+#6 4.319 Processing triggers for libc-bin (2.36-9+deb12u8) ...
+#6 DONE 4.4s
+
+#7 [web 3/7] WORKDIR /app/
+#7 DONE 0.0s
+
+#8 [web 4/7] COPY .env.dev .env
+#8 DONE 0.0s
+
+#9 [web 5/7] RUN gem install bundler rails
+#9 12.96 Successfully installed bundler-2.5.18
+#9 12.96 Successfully installed zeitwerk-2.6.18
+#9 12.96 Successfully installed thor-1.3.2
+#9 12.96 Successfully installed webrick-1.8.1
+#9 12.96 Successfully installed rack-3.1.7
+#9 12.96 Successfully installed rackup-2.1.0
+#9 12.96 Successfully installed concurrent-ruby-1.3.4
+#9 12.96 Successfully installed tzinfo-2.0.6
+#9 12.96 Successfully installed i18n-1.14.5
+#9 12.96 Successfully installed connection_pool-2.4.1
+#9 12.96 Successfully installed activesupport-7.2.1
+#9 12.96 Successfully installed useragent-0.16.10
+#9 12.96 Successfully installed nokogiri-1.16.7-aarch64-linux
+#9 12.96 Successfully installed crass-1.0.6
+#9 12.96 Successfully installed loofah-2.22.0
+#9 12.96 Successfully installed rails-html-sanitizer-1.6.0
+#9 12.96 Successfully installed rails-dom-testing-2.2.0
+#9 12.96 Successfully installed rack-test-2.1.0
+#9 12.96 Successfully installed rack-session-2.0.0
+#9 12.96 Successfully installed erubi-1.13.0
+#9 12.96 Successfully installed builder-3.3.0
+#9 12.96 Successfully installed actionview-7.2.1
+#9 12.96 Successfully installed actionpack-7.2.1
+#9 12.96 Successfully installed railties-7.2.1
+#9 12.96 Successfully installed marcel-1.0.4
+#9 12.96 Successfully installed activemodel-7.2.1
+#9 12.96 Successfully installed activerecord-7.2.1
+#9 12.96 Successfully installed globalid-1.2.1
+#9 12.96 Successfully installed activejob-7.2.1
+#9 12.96 Successfully installed activestorage-7.2.1
+#9 12.96 Successfully installed actiontext-7.2.1
+#9 12.96 Successfully installed mini_mime-1.1.5
+#9 12.96 Successfully installed mail-2.8.1
+#9 12.96 Successfully installed actionmailer-7.2.1
+#9 12.96 Successfully installed actionmailbox-7.2.1
+#9 12.96 Successfully installed websocket-extensions-0.1.5
+#9 12.96 Building native extensions. This could take a while...
+#9 13.09 Successfully installed websocket-driver-0.7.6
+#9 13.09 Building native extensions. This could take a while...
+#9 14.60 Successfully installed nio4r-2.7.3
+#9 14.60 Successfully installed actioncable-7.2.1
+#9 14.60 Successfully installed rails-7.2.1
+#9 14.60 40 gems installed
+#9 DONE 14.7s
+
+#10 [web 6/7] COPY setup.sh /app/setup.sh
+#10 DONE 0.0s
+
+#11 [web 7/7] RUN chmod +x /app/setup.sh
+#11 DONE 0.1s
+
+#12 [web] exporting to image
+#12 exporting layers
+#12 exporting layers 0.2s done
+#12 writing image sha256:0a0bba7c24e9f5a43800fb7d289c8e1c045b1415cc03442939dc410caa063516 done
+#12 naming to docker.io/library/spina-app-web
+#12 naming to docker.io/library/spina-app-web done
+#12 DONE 0.2s
+Starting Docker containers
+ Container spina-app-db-1  Running
+ Container spina-app-web-1  Recreate
+ Container spina-app-web-1  Recreated
+ Container spina-app-db-1  Waiting
+ Container spina-app-db-1  Healthy
+ Container spina-app-web-1  Starting
+ Container spina-app-web-1  Started
+Docker containers started successfully
+Environment set to dev. RAILS_ENV set to development
+Loaded environment variables from .env.dev
+Build args: --build-arg ENV=dev --build-arg RAILS_ENV=development --build-arg POSTGRES_USER=dev_user --build-arg POSTGRES_PASSWORD=dev_password --build-arg POSTGRES_DB=spina --build-arg SPINA_ADMIN_EMAIL=admin@example.com --build-arg SPINA_ADMIN_PASSWORD=password123 --build-arg DATABASE_URL=postgres://dev_user:dev_password@db:5432/spina 
+Building Docker containers
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [web internal] load build definition from Dockerfile
+#1 transferring dockerfile: 647B done
+#1 DONE 0.0s
+
+#2 [web internal] load metadata for docker.io/library/ruby:3.3.5-bookworm
+#2 DONE 0.5s
+
+#3 [web internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [web 1/7] FROM docker.io/library/ruby:3.3.5-bookworm@sha256:9ee601015fbb7c610ae02137d5698ab712f821069eaf7c0548e58a5b609970aa
+#4 CACHED
+
+#5 [web internal] load build context
+#5 transferring context: 512B done
+#5 DONE 0.0s
+
+#6 [web 2/7] RUN apt-get update -qq && apt-get install -y nodejs postgresql-client netcat
+#6 1.878 Reading package lists...
+#6 2.088 Building dependency tree...
+#6 2.141 Reading state information...
+#6 2.143 Package netcat is a virtual package provided by:
+#6 2.143   netcat-openbsd 1.219-1
+#6 2.143   netcat-traditional 1.10-47
+#6 2.143 
+#6 2.144 E: Package 'netcat' has no installation candidate
+#6 ERROR: process "/bin/sh -c apt-get update -qq && apt-get install -y nodejs postgresql-client netcat" did not complete successfully: exit code: 100
+------
+ > [web 2/7] RUN apt-get update -qq && apt-get install -y nodejs postgresql-client netcat:
+
+2.088 Building dependency tree...
+2.141 Reading state information...
+2.143 Package netcat is a virtual package provided by:
+2.143   netcat-openbsd 1.219-1
+2.143   netcat-traditional 1.10-47
+2.143 
+2.144 E: Package 'netcat' has no installation candidate
+------
+failed to solve: process "/bin/sh -c apt-get update -qq && apt-get install -y nodejs postgresql-client netcat" did not complete successfully: exit code: 100
+Build failed. Check run.log for details.
+Environment set to dev. RAILS_ENV set to development
+Loaded environment variables from .env.dev
+Build args: --build-arg ENV=dev --build-arg RAILS_ENV=development --build-arg POSTGRES_USER=dev_user --build-arg POSTGRES_PASSWORD=dev_password --build-arg POSTGRES_DB=spina --build-arg SPINA_ADMIN_EMAIL=admin@example.com --build-arg SPINA_ADMIN_PASSWORD=password123 --build-arg DATABASE_URL=postgres://dev_user:dev_password@db:5432/spina 
+Building Docker containers
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [web internal] load build definition from Dockerfile
+#1 transferring dockerfile: 643B done
+#1 DONE 0.0s
+
+#2 [web internal] load metadata for docker.io/library/ruby:3.3.5-bookworm
+#2 DONE 0.5s
+
+#3 [web internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [web 1/7] FROM docker.io/library/ruby:3.3.5-bookworm@sha256:9ee601015fbb7c610ae02137d5698ab712f821069eaf7c0548e58a5b609970aa
+#4 CACHED
+
+#5 [web internal] load build context
+#5 transferring context: 58B done
+#5 DONE 0.0s
+
+#6 [web 2/7] RUN apt-get update -qq && apt-get install -y nodejs postgresql-client nc
+#6 1.828 Reading package lists...
+#6 2.039 Building dependency tree...
+#6 2.096 Reading state information...
+#6 2.099 Package nc is not available, but is referred to by another package.
+#6 2.099 This may mean that the package is missing, has been obsoleted, or
+#6 2.099 is only available from another source
+#6 2.099 
+#6 2.100 E: Package 'nc' has no installation candidate
+#6 ERROR: process "/bin/sh -c apt-get update -qq && apt-get install -y nodejs postgresql-client nc" did not complete successfully: exit code: 100
+------
+ > [web 2/7] RUN apt-get update -qq && apt-get install -y nodejs postgresql-client nc:
+
+2.039 Building dependency tree...
+2.096 Reading state information...
+2.099 Package nc is not available, but is referred to by another package.
+2.099 This may mean that the package is missing, has been obsoleted, or
+2.099 is only available from another source
+2.099 
+2.100 E: Package 'nc' has no installation candidate
+------
+failed to solve: process "/bin/sh -c apt-get update -qq && apt-get install -y nodejs postgresql-client nc" did not complete successfully: exit code: 100
+Build failed. Check run.log for details.
+Environment set to dev. RAILS_ENV set to development
+Loaded environment variables from .env.dev
+Build args: --build-arg ENV=dev --build-arg RAILS_ENV=development --build-arg POSTGRES_USER=dev_user --build-arg POSTGRES_PASSWORD=dev_password --build-arg POSTGRES_DB=spina --build-arg SPINA_ADMIN_EMAIL=admin@example.com --build-arg SPINA_ADMIN_PASSWORD=password123 --build-arg DATABASE_URL=postgres://dev_user:dev_password@db:5432/spina 
+Building Docker containers
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [web internal] load build definition from Dockerfile
+#1 transferring dockerfile: 655B done
+#1 DONE 0.0s
+
+#2 [web internal] load metadata for docker.io/library/ruby:3.3.5-bookworm
+#2 DONE 1.0s
+
+#3 [web internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [web 1/7] FROM docker.io/library/ruby:3.3.5-bookworm@sha256:9ee601015fbb7c610ae02137d5698ab712f821069eaf7c0548e58a5b609970aa
+#4 CACHED
+
+#5 [web internal] load build context
+#5 transferring context: 58B done
+#5 DONE 0.0s
+
+#6 [web 2/7] RUN apt-get update -qq && apt-get install -y nodejs postgresql-client netcat-openbsd
+#6 1.892 Reading package lists...
+#6 2.094 Building dependency tree...
+#6 2.147 Reading state information...
+#6 2.210 The following additional packages will be installed:
+#6 2.210   libc-ares2 libnode108 libuv1 node-acorn node-busboy node-cjs-module-lexer
+#6 2.210   node-undici node-xtend nodejs-doc postgresql-client-15
+#6 2.210   postgresql-client-common
+#6 2.210 Suggested packages:
+#6 2.210   npm postgresql-15 postgresql-doc-15
+#6 2.254 The following NEW packages will be installed:
+#6 2.254   libc-ares2 libnode108 libuv1 netcat-openbsd node-acorn node-busboy
+#6 2.254   node-cjs-module-lexer node-undici node-xtend nodejs nodejs-doc
+#6 2.254   postgresql-client postgresql-client-15 postgresql-client-common
+#6 2.385 0 upgraded, 14 newly installed, 0 to remove and 0 not upgraded.
+#6 2.385 Need to get 15.9 MB of archives.
+#6 2.385 After this operation, 75.6 MB of additional disk space will be used.
+#6 2.385 Get:1 http://deb.debian.org/debian bookworm/main arm64 libc-ares2 arm64 1.18.1-3 [99.2 kB]
+#6 2.525 Get:2 http://deb.debian.org/debian bookworm/main arm64 libuv1 arm64 1.44.2-1+deb12u1 [130 kB]
+#6 2.592 Get:3 http://deb.debian.org/debian bookworm/main arm64 node-xtend all 4.0.2-3 [3932 B]
+#6 2.593 Get:4 http://deb.debian.org/debian bookworm/main arm64 nodejs arm64 18.19.0+dfsg-6~deb12u2 [319 kB]
+#6 2.655 Get:5 http://deb.debian.org/debian bookworm/main arm64 node-acorn all 8.8.1+ds+~cs25.17.7-2 [128 kB]
+#6 2.662 Get:6 http://deb.debian.org/debian bookworm/main arm64 node-cjs-module-lexer all 1.2.2+dfsg-5 [30.1 kB]
+#6 2.664 Get:7 http://deb.debian.org/debian bookworm/main arm64 node-busboy all 1.6.0+~cs2.6.0-2 [16.9 kB]
+#6 2.666 Get:8 http://deb.debian.org/debian bookworm/main arm64 node-undici all 5.15.0+dfsg1+~cs20.10.9.3-1+deb12u4 [285 kB]
+#6 2.708 Get:9 http://deb.debian.org/debian bookworm/main arm64 libnode108 arm64 18.19.0+dfsg-6~deb12u2 [9547 kB]
+#6 3.150 Get:10 http://deb.debian.org/debian bookworm/main arm64 netcat-openbsd arm64 1.219-1 [40.8 kB]
+#6 3.152 Get:11 http://deb.debian.org/debian bookworm/main arm64 nodejs-doc all 18.19.0+dfsg-6~deb12u2 [3569 kB]
+#6 3.264 Get:12 http://deb.debian.org/debian bookworm/main arm64 postgresql-client-common all 248 [35.1 kB]
+#6 3.265 Get:13 http://deb.debian.org/debian bookworm/main arm64 postgresql-client-15 arm64 15.8-0+deb12u1 [1652 kB]
+#6 3.316 Get:14 http://deb.debian.org/debian bookworm/main arm64 postgresql-client all 15+248 [10.1 kB]
+#6 3.426 debconf: delaying package configuration, since apt-utils is not installed
+#6 3.436 Fetched 15.9 MB in 1s (15.0 MB/s)
+#6 3.445 Selecting previously unselected package libc-ares2:arm64.
+#6 3.445 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 23265 files and directories currently installed.)
+#6 3.456 Preparing to unpack .../00-libc-ares2_1.18.1-3_arm64.deb ...
+#6 3.457 Unpacking libc-ares2:arm64 (1.18.1-3) ...
+#6 3.471 Selecting previously unselected package libuv1:arm64.
+#6 3.472 Preparing to unpack .../01-libuv1_1.44.2-1+deb12u1_arm64.deb ...
+#6 3.473 Unpacking libuv1:arm64 (1.44.2-1+deb12u1) ...
+#6 3.486 Selecting previously unselected package node-xtend.
+#6 3.487 Preparing to unpack .../02-node-xtend_4.0.2-3_all.deb ...
+#6 3.487 Unpacking node-xtend (4.0.2-3) ...
+#6 3.496 Selecting previously unselected package nodejs.
+#6 3.497 Preparing to unpack .../03-nodejs_18.19.0+dfsg-6~deb12u2_arm64.deb ...
+#6 3.498 Unpacking nodejs (18.19.0+dfsg-6~deb12u2) ...
+#6 3.528 Selecting previously unselected package node-acorn.
+#6 3.529 Preparing to unpack .../04-node-acorn_8.8.1+ds+~cs25.17.7-2_all.deb ...
+#6 3.530 Unpacking node-acorn (8.8.1+ds+~cs25.17.7-2) ...
+#6 3.546 Selecting previously unselected package node-cjs-module-lexer.
+#6 3.547 Preparing to unpack .../05-node-cjs-module-lexer_1.2.2+dfsg-5_all.deb ...
+#6 3.548 Unpacking node-cjs-module-lexer (1.2.2+dfsg-5) ...
+#6 3.557 Selecting previously unselected package node-busboy.
+#6 3.558 Preparing to unpack .../06-node-busboy_1.6.0+~cs2.6.0-2_all.deb ...
+#6 3.559 Unpacking node-busboy (1.6.0+~cs2.6.0-2) ...
+#6 3.569 Selecting previously unselected package node-undici.
+#6 3.570 Preparing to unpack .../07-node-undici_5.15.0+dfsg1+~cs20.10.9.3-1+deb12u4_all.deb ...
+#6 3.572 Unpacking node-undici (5.15.0+dfsg1+~cs20.10.9.3-1+deb12u4) ...
+#6 3.595 Selecting previously unselected package libnode108:arm64.
+#6 3.596 Preparing to unpack .../08-libnode108_18.19.0+dfsg-6~deb12u2_arm64.deb ...
+#6 3.597 Unpacking libnode108:arm64 (18.19.0+dfsg-6~deb12u2) ...
+#6 3.887 Selecting previously unselected package netcat-openbsd.
+#6 3.888 Preparing to unpack .../09-netcat-openbsd_1.219-1_arm64.deb ...
+#6 3.889 Unpacking netcat-openbsd (1.219-1) ...
+#6 3.899 Selecting previously unselected package nodejs-doc.
+#6 3.900 Preparing to unpack .../10-nodejs-doc_18.19.0+dfsg-6~deb12u2_all.deb ...
+#6 3.901 Unpacking nodejs-doc (18.19.0+dfsg-6~deb12u2) ...
+#6 4.030 Selecting previously unselected package postgresql-client-common.
+#6 4.031 Preparing to unpack .../11-postgresql-client-common_248_all.deb ...
+#6 4.032 Unpacking postgresql-client-common (248) ...
+#6 4.044 Selecting previously unselected package postgresql-client-15.
+#6 4.045 Preparing to unpack .../12-postgresql-client-15_15.8-0+deb12u1_arm64.deb ...
+#6 4.045 Unpacking postgresql-client-15 (15.8-0+deb12u1) ...
+#6 4.132 Selecting previously unselected package postgresql-client.
+#6 4.133 Preparing to unpack .../13-postgresql-client_15+248_all.deb ...
+#6 4.133 Unpacking postgresql-client (15+248) ...
+#6 4.145 Setting up postgresql-client-common (248) ...
+#6 4.149 Setting up netcat-openbsd (1.219-1) ...
+#6 4.152 update-alternatives: using /bin/nc.openbsd to provide /bin/nc (nc) in auto mode
+#6 4.154 Setting up postgresql-client-15 (15.8-0+deb12u1) ...
+#6 4.292 update-alternatives: using /usr/share/postgresql/15/man/man1/psql.1.gz to provide /usr/share/man/man1/psql.1.gz (psql.1.gz) in auto mode
+#6 4.305 Setting up node-cjs-module-lexer (1.2.2+dfsg-5) ...
+#6 4.307 Setting up libc-ares2:arm64 (1.18.1-3) ...
+#6 4.310 Setting up libuv1:arm64 (1.44.2-1+deb12u1) ...
+#6 4.312 Setting up nodejs-doc (18.19.0+dfsg-6~deb12u2) ...
+#6 4.314 Setting up node-xtend (4.0.2-3) ...
+#6 4.317 Setting up node-busboy (1.6.0+~cs2.6.0-2) ...
+#6 4.319 Setting up postgresql-client (15+248) ...
+#6 4.321 Setting up node-undici (5.15.0+dfsg1+~cs20.10.9.3-1+deb12u4) ...
+#6 4.325 Setting up node-acorn (8.8.1+ds+~cs25.17.7-2) ...
+#6 4.328 Setting up libnode108:arm64 (18.19.0+dfsg-6~deb12u2) ...
+#6 4.330 Setting up nodejs (18.19.0+dfsg-6~deb12u2) ...
+#6 4.333 update-alternatives: using /usr/bin/nodejs to provide /usr/bin/js (js) in auto mode
+#6 4.334 Processing triggers for libc-bin (2.36-9+deb12u8) ...
+#6 DONE 4.4s
+
+#7 [web 3/7] WORKDIR /app/
+#7 DONE 0.0s
+
+#8 [web 4/7] COPY .env.dev .env
+#8 DONE 0.0s
+
+#9 [web 5/7] RUN gem install bundler rails
+#9 12.91 Successfully installed bundler-2.5.18
+#9 12.91 Successfully installed zeitwerk-2.6.18
+#9 12.91 Successfully installed thor-1.3.2
+#9 12.91 Successfully installed webrick-1.8.1
+#9 12.91 Successfully installed rack-3.1.7
+#9 12.91 Successfully installed rackup-2.1.0
+#9 12.91 Successfully installed concurrent-ruby-1.3.4
+#9 12.91 Successfully installed tzinfo-2.0.6
+#9 12.91 Successfully installed i18n-1.14.5
+#9 12.91 Successfully installed connection_pool-2.4.1
+#9 12.91 Successfully installed activesupport-7.2.1
+#9 12.91 Successfully installed useragent-0.16.10
+#9 12.91 Successfully installed nokogiri-1.16.7-aarch64-linux
+#9 12.91 Successfully installed crass-1.0.6
+#9 12.91 Successfully installed loofah-2.22.0
+#9 12.91 Successfully installed rails-html-sanitizer-1.6.0
+#9 12.91 Successfully installed rails-dom-testing-2.2.0
+#9 12.91 Successfully installed rack-test-2.1.0
+#9 12.91 Successfully installed rack-session-2.0.0
+#9 12.91 Successfully installed erubi-1.13.0
+#9 12.91 Successfully installed builder-3.3.0
+#9 12.91 Successfully installed actionview-7.2.1
+#9 12.91 Successfully installed actionpack-7.2.1
+#9 12.91 Successfully installed railties-7.2.1
+#9 12.91 Successfully installed marcel-1.0.4
+#9 12.91 Successfully installed activemodel-7.2.1
+#9 12.91 Successfully installed activerecord-7.2.1
+#9 12.91 Successfully installed globalid-1.2.1
+#9 12.91 Successfully installed activejob-7.2.1
+#9 12.91 Successfully installed activestorage-7.2.1
+#9 12.91 Successfully installed actiontext-7.2.1
+#9 12.91 Successfully installed mini_mime-1.1.5
+#9 12.91 Successfully installed mail-2.8.1
+#9 12.91 Successfully installed actionmailer-7.2.1
+#9 12.91 Successfully installed actionmailbox-7.2.1
+#9 12.91 Successfully installed websocket-extensions-0.1.5
+#9 12.91 Building native extensions. This could take a while...
+#9 13.03 Successfully installed websocket-driver-0.7.6
+#9 13.03 Building native extensions. This could take a while...
+#9 14.52 Successfully installed nio4r-2.7.3
+#9 14.52 Successfully installed actioncable-7.2.1
+#9 14.52 Successfully installed rails-7.2.1
+#9 14.52 40 gems installed
+#9 DONE 14.6s
+
+#10 [web 6/7] COPY setup.sh /app/setup.sh
+#10 DONE 0.0s
+
+#11 [web 7/7] RUN chmod +x /app/setup.sh
+#11 DONE 0.2s
+
+#12 [web] exporting to image
+#12 exporting layers
+#12 exporting layers 0.2s done
+#12 writing image sha256:8c53f8b804f686c38b9a3dc0404162013b14d5c85525e791a14f6a17418f10be done
+#12 naming to docker.io/library/spina-app-web
+#12 naming to docker.io/library/spina-app-web done
+#12 DONE 0.2s
+Starting Docker containers
+ Container spina-app-db-1  Running
+ Container spina-app-web-1  Recreate
+ Container spina-app-web-1  Recreated
+ Container spina-app-db-1  Waiting
+ Container spina-app-db-1  Healthy
+ Container spina-app-web-1  Starting
+ Container spina-app-web-1  Started
+Docker containers started successfully

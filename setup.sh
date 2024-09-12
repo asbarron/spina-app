@@ -7,8 +7,7 @@ while ! nc -z db 5432; do
 done
 
 # Initialize a new Rails application
-rails new spina --force --database=postgresql
-cd spina
+rails new . --force --database=postgresql
 
 # Prepare the database
 rails db:prepare

@@ -58,8 +58,8 @@ main() {
   esac
 
   log "Environment set to $ENV. RAILS_ENV set to $RAILS_ENV"
-
   load_env_file "$ENV_FILE"
+  
   # Removing old volumes
   log "Removing old volumes"
   docker-compose down -v >> "$LOGFILE" 2>&1 || {

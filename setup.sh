@@ -1,4 +1,6 @@
 #!/bin/sh
+# Generate a secret key for Rails
+SECRET_KEY_BASE=$(rails secret)
 
 # Wait for the database to be ready
 echo "Waiting for database..."
@@ -17,11 +19,12 @@ rails active_storage:install
 echo "gem 'spina'" >> Gemfile
 bundle install --quiet
 
-cp -r account.rb /app/app/models/account.rb
-
 # Install Spina
 { echo ""; } | rails g spina:install --force --skip-mount
 rails db:migrate
 
+# Set environment variable for SECRET_KEY_BASE
+export SECRET_KEY_BASE=$SECRET_KEY_BASE
+
 # Start app
-puma -C config/puma.rb
+puma -C config/puma.rb --redirect-stdout log/puma.stdout.log --redirect-stderr log/puma.stderr.log

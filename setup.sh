@@ -7,14 +7,12 @@ while ! nc -z db 5432; do
 done
 
 # Initialize a new Rails application
-rails new . --force --database=postgresql
-
-# Install dependencies
-bundle install
+rails new spina --force --database=postgresql
+cd spina
 
 # Prepare the database
-bundle exec rails db:create
-bundle exec rails active_storage:install 
+rails db:prepare
+rails active_storage:install 
 
 # Add Spina to the Gemfile
 echo "gem 'spina'" >> Gemfile
@@ -24,4 +22,4 @@ bundle install
 { echo ""; } | rails g spina:install --force --skip-mount
 
 # Start the server
-exec bundle exec puma -C config/puma.rb
+puma

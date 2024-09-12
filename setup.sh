@@ -15,13 +15,17 @@ rails new . --force --database=postgresql
 rails db:create
 rails active_storage:install
 
-# Add Spina to the Gemfile
-echo "gem 'spina'" >> Gemfile
-bundle install --quiet
+# bugfix for spina not getting latest version: https://github.com/SpinaCMS/Spina/issues/1379
+echo "gem 'spina', '~> 2.18'" >> Gemfile
+
+bundle install
 
 # Install Spina
-{ echo ""; } | rails g spina:install --force --skip-mount
+rails g spina:install --force --silent
 rails db:migrate
+
+mv seeds.rb db/seeds.rb
+rails db:seed
 
 # Set environment variable for SECRET_KEY_BASE
 export SECRET_KEY_BASE=$SECRET_KEY_BASE

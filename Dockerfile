@@ -21,11 +21,11 @@ ENV DATABASE_URL="${DATABASE_URL}"
 # Set ENV
 COPY .env."${ENV}" .env
 
-#COPY spina.rb /app/spina.rb
+COPY seeds.rb /app/seeds.rb
 
 # Install Bundler and Rails
 RUN gem install bundler 
-RUN gem install rails -v 7.1.1
+RUN gem install rails -v 7.1.0
 
 # Expose the Rails port
 EXPOSE 3000

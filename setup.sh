@@ -15,7 +15,9 @@ rails active_storage:install
 
 # Add Spina to the Gemfile
 echo "gem 'spina'" >> Gemfile
-bundle install 
+bundle install --quiet
+
+cp -r account.rb /app/app/models/account.rb
 
 # Install Spina
 { echo ""; } | rails g spina:install --force --skip-mount

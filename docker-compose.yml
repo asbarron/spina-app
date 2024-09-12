@@ -1,0 +1,51 @@
+version: '3.9'
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    labels:
+      - "environment=${ENV}"
+    volumes:
+      - .:/app
+    ports:
+      - "3000:3000"
+    command: bundle exec puma -C config/puma.rb
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db/${POSTGRES_DB}
+    networks:
+      - spina-app_default
+    env_file:
+      - .env.${ENV}
+  
+  db:
+    image: postgres:latest
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - spina-app_default
+    env_file:
+      - .env.${ENV}
+
+networks:
+  spina-app_default:
+    driver: bridge
+
+volumes:
+  postgres_data:
+    driver: local

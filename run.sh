@@ -60,7 +60,12 @@ main() {
   log "Environment set to $ENV. RAILS_ENV set to $RAILS_ENV"
 
   load_env_file "$ENV_FILE"
-
+  # Removing old volumes
+  log "Removing old volumes"
+  docker-compose down -v >> "$LOGFILE" 2>&1 || {
+    log "Error removing old volumes. Check $LOGFILE for details."
+    exit 1
+  }
   # Build Docker containers
   log "Building Docker containers"
   docker-compose build --no-cache $BUILD_ARGS >> "$LOGFILE" 2>&1 || {

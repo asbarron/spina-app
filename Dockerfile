@@ -21,6 +21,8 @@ ENV DATABASE_URL="${DATABASE_URL}"
 # Set ENV
 COPY .env."${ENV}" .env
 
+COPY account.rb /app/account.rb
+
 # Install Bundler and Rails
 RUN gem install bundler rails
 
@@ -31,5 +33,5 @@ EXPOSE 3000
 COPY setup.sh /app/setup.sh
 RUN chmod +x /app/setup.sh
 
-# Start the application
+# Install SpinaCMS and start app
 CMD ["./setup.sh"]

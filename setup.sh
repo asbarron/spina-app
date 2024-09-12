@@ -10,8 +10,8 @@ done
 rails new . --force --database=postgresql
 
 # Prepare the database
-rails db:prepare
-rails active_storage:install 
+rails db:create
+rails active_storage:install
 
 # Add Spina to the Gemfile
 echo "gem 'spina'" >> Gemfile
@@ -21,6 +21,7 @@ cp -r account.rb /app/app/models/account.rb
 
 # Install Spina
 { echo ""; } | rails g spina:install --force --skip-mount
+rails db:migrate
 
-# Start the server
-puma
+# Start app
+puma -C config/puma.rb

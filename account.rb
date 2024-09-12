@@ -1,26 +1,16 @@
-# app/models/spina/account.rb
-
 module Spina
     class Account < ApplicationRecord
-      include AttrJson::Record
-      include AttrJson::NestedAttributes
-      include Partable
-      include TranslatedContent
-  
-      serialize :preferences, JSON
-  
-      after_save :bootstrap_website
-  
+      # Simple validation for presence of name
       validates :name, presence: true
   
-      def to_s
-        name
-      end
+      # Use a hash for preferences, avoid custom serializers
+      serialize :preferences, Hash
   
+      # Method to access serialized attributes
       def self.serialized_attr_accessor(*args)
         args.each do |method_name|
           define_method method_name do
-            self.preferences.try(:[], method_name.to_sym)
+            self.preferences[method_name.to_sym] if self.preferences
           end
   
           define_method "#{method_name}=" do |value|
@@ -30,6 +20,7 @@ module Spina
         end
       end
   
+      # Define attributes you need to serialize
       serialized_attr_accessor :google_analytics, :google_site_verification, :facebook, :twitter, :instagram, :youtube, :linkedin, :google_plus, :theme
   
       private

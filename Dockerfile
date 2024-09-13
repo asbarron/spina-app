@@ -22,13 +22,14 @@ ENV DATABASE_URL="${DATABASE_URL}"
 COPY .env."${ENV}" .env
 
 COPY seeds.rb /app/seeds.rb
+COPY mobility.rb /app/mobility.rb
 
 # Install Bundler and Rails
 RUN gem install bundler 
 RUN gem install rails -v 7.1.0
 
 # Expose the Rails port
-EXPOSE 3000
+EXPOSE 3000 443
 
 # Copy the setup script into the container
 COPY setup.sh /app/setup.sh

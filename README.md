@@ -40,6 +40,11 @@ git clone https://github.com/mztriz/spina-app.git
 cd spina-app
 ```
 
+#### Set ENV vars for run.sh
+```bash
+while IFS='=' read -r key value; do [ -n "$key" ] && [ "${key:0:1}" != "#" ] && export "$key=$value"; done < .env.dev
+```
+
 #### Run the code
 Run the run.sh script with the appropriate environment (dev for development or prod for production)
 

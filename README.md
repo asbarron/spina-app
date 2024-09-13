@@ -59,7 +59,7 @@ in the terminal  you can check the rest of the progress of the containers with `
 After Rails is running, the app can be reached at either
 [http://localhost:3000](http://localhost:3000) (dev) or [https://localhost](https://localhost) (prod).
 
-In the development environemnt the `/admin` panel is available at [http://localhost:3000/admin](http://localhost:3000) and the login information is available in [seeds.rb](./seeds.rb).
+In the development environment the `/admin` panel is available at [http://localhost:3000/admin](http://localhost:3000) and the login information is available in [seeds.rb](./seeds.rb).
 
 ## Demo
 Running `run.sh` for dev and prod

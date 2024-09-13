@@ -27,13 +27,13 @@
 
 ## Getting started
 
-###Prereqs
+### Prereqs
 
 Docker and Docker Compose
 
 ### Running the app
 
-####Get the code
+#### Get the code
 
 ```bash
 git clone https://github.com/mztriz/spina-app.git

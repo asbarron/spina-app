@@ -66,5 +66,8 @@ or
 In the development environemnt the `/admin` panel is available at [http://localhost:3000/admin](http://localhost:3000) and the login information is available in [seeds.rb](./seeds.rb).
 
 ## Demo
-![Demo](./assets/Kapture%202024-09-12%20at%2017.13.09.gif)
-![AdminPanel](./assets/Kapture%202024-09-12%20at%2017.06.32.gif)
+Running `run.sh` for dev and prod
+![Demo](./assets/Kapture%202024-09-12%20at%2017.06.32.gif)
+
+I forgot to show the admin panel
+![AdminPanel](./assets/Kapture%202024-09-12%20at%2017.13.09.gif)

@@ -68,7 +68,8 @@ In the development environment the `/admin` panel is available at [http://localh
 
 ## Demo
 Running `run.sh` for dev and prod
-![Demo](./assets/Kapture%202024-09-12%20at%2017.06.32.gif)
+![DemoDev](./assets/Kapture%202024-09-12%20at%2018.32.18.mp4)
+![DemoProd](./assets/Kapture%202024-09-12%20at%2018.27.37.mp4)
 
 I forgot to show the admin panel
 ![AdminPanel](./assets/Kapture%202024-09-12%20at%2017.13.09.gif)

@@ -40,7 +40,7 @@ git clone https://github.com/mztriz/spina-app.git
 cd spina-app
 ```
 
-####Run the code
+#### Run the code
 Run the run.sh script with the appropriate environment (dev for development or prod for production)
 
 ```bash
